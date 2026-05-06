@@ -67,4 +67,24 @@ class ExampleTest extends TestCase
             'punchline' => 'Because.',
         ]);
     }
+
+    public function test_the_task_two_demo_page_is_available(): void
+    {
+        $response = $this->get('/test-task-2');
+
+        $response
+            ->assertOk()
+            ->assertSeeText('Задание 2. Динамическое отображение полей')
+            ->assertSeeText('Посмотреть сниппет');
+    }
+
+    public function test_the_task_two_script_can_be_downloaded(): void
+    {
+        $response = $this->get('/test-task-2/download');
+
+        $response
+            ->assertOk()
+            ->assertHeader('content-type', 'application/javascript; charset=UTF-8')
+            ->assertDownload('testlist-fields.js');
+    }
 }
