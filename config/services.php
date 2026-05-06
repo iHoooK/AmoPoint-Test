@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'official_joke_api' => [
+        'base_url' => env('OFFICIAL_JOKE_API_BASE_URL', 'https://official-joke-api.appspot.com'),
+        'verify' => env('OFFICIAL_JOKE_API_VERIFY', true),
+    ],
+
 ];
